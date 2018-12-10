@@ -1,3 +1,10 @@
 {
-    "project_name": "py_restful_microservice_template"
+    "deployConfig": {
+	"instanceName": "py_template"
+    },
+    dependedServers: [
+	{
+	    "name": "serv1"
+	}
+    ]
 }
