@@ -1,5 +1,7 @@
 ---
 public_prefix: ""
-specialist_service_debug: "true"
-specialist_service_port: 9002
+{{ deployConfig.instanceName }}_port: 9002
+{{ deployConfig.instanceName }}_debug: "true"
+
 ...
+

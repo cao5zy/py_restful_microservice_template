@@ -22,7 +22,7 @@
     image: " {{ '{{' }} {{ deployConfig.instanceName }} {{ '}}' }}_img:latest"
     working_dir: "/app"
     volumes:
-      - " {{ '{{' }} {{ deploy_root }} {{ '}}' }}:/app:Z"
+      - " {{ '{{' }} deploy_root {{ '}}' }}:/app:Z"
     ports:
       - "{{ '{{' }} {{ deployConfig.instanceName }}_port {{ '}}' }}: {{ '{{' }} {{ deployConfig.instanceName }}_port {{ '}}' }}"
     state: started

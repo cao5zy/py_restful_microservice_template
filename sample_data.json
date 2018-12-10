@@ -2,6 +2,13 @@
     "deployConfig": {
 	"instanceName": "py_template"
     },
+    serviceInterface: {
+	"methods": [
+	    {
+		"name": "spec"
+	    }
+	]
+    },
     dependedServers: [
 	{
 	    "name": "serv1"

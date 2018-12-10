@@ -1,4 +1,4 @@
 ---
-specialist_service: "{{public_prefix}}specialist_service"
-specialist_service_root: ".specialist_service"
+{{deployConfig.instanceName}}: "{{'{{public_prefix}}'}}{{deployConfig.instanceName}}"
+deploy_root: ".{{'{{'}} {{ deployConfig.instanceName }} {{ '}}' }}"
 ...
