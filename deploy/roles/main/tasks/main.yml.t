@@ -9,7 +9,7 @@
     src: "./src/"
     dest: "{{'{{'}} deploy_root {{'}}'}}"
 
-- name: "build the image for "{{'{{'}} deploy_root {{'}}'}}""
+- name: "build the image for {{ deployConfig.instanceName}}"
   docker_image:
     name: "{{ '{{' }} {{ deployConfig.instanceName}} {{ '}}' }}_img"
     tag: latest
@@ -18,11 +18,11 @@
     
 - name: "deploy {{ '{{' }} {{ deployConfig.instanceName }} {{ '}}' }} for dev"
   docker_container:
-    name: " {{ '{{' }} {{ deployConfig.instanceName }} {{ '}}' }}"
-    image: " {{ '{{' }} {{ deployConfig.instanceName }} {{ '}}' }}_img:latest"
+    name: "{{ '{{' }} {{ deployConfig.instanceName }} {{ '}}' }}"
+    image: "{{ '{{' }} {{ deployConfig.instanceName }} {{ '}}' }}_img:latest"
     working_dir: "/app"
     volumes:
-      - " {{ '{{' }} deploy_root {{ '}}' }}:/app:Z"
+      - "{{ '{{' }} deploy_root {{ '}}' }}:/app:Z"
     ports:
       - "{{ '{{' }} {{ deployConfig.instanceName }}_port {{ '}}' }}: {{ '{{' }} {{ deployConfig.instanceName }}_port {{ '}}' }}"
     state: started

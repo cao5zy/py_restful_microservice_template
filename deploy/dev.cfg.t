@@ -1,5 +1,5 @@
 {
-  "name": "{{deployConfig.instanceName}}",
+  "project_name": "{{deployConfig.instanceName}}",
   "dependencies": [{% for serv in dependedServers %}
   {
      "project_name": "{{serv.name}}",
