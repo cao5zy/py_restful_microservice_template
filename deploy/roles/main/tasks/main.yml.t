@@ -9,6 +9,11 @@
     src: "./src/"
     dest: "{{'{{'}} deploy_root {{'}}'}}"
 
+- name: "set template for {{ deployConfig.instanceName }}"
+  template:
+    src: "app.cfg.template"
+    dest: "{{'{{'}} deploy_root {{'}}'}}/app.cfg"
+
 - name: "build the image for {{ deployConfig.instanceName}}"
   docker_image:
     name: "{{ '{{' }} {{ deployConfig.instanceName}} {{ '}}' }}_img"
