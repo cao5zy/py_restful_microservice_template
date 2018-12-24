@@ -8,7 +8,7 @@ app = Flask(__name__)
 api = Api(app)
 logger = Logger.getLogger(__name__)
 
-{% for method in serviceInterface.methods %}api.add_resource({{method.name | capitalize}}, "/{{method.name}}/<id>"){% endfor %}
+{% for method in serviceInterface.methods %}api.add_resource({{method.name | capitalize}}, "/{{method.name}}{% for key in method.params %}/<{{ key }}>{% endfor%}"){% endfor %}
 
 
 if __name__ == "__main__":

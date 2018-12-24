@@ -5,7 +5,12 @@
     serviceInterface: {
 	"methods": [
 	    {
-		"name": "spec"
+		"name": "spec",
+		"method": "get",
+		"params": {
+		    "id": "string",
+		    "name": "string"
+		}
 	    }
 	]
     },
