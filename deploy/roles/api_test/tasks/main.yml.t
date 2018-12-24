@@ -1,14 +1,18 @@
 ---
-- name: name
+{% for method in serviceInterface.methods %}
+{% for http_method in method.http_methods %}
+- name: test for {{method.name}}-{{http_method}}
   uri:
-    url: "{{'{{'}}public_host{{'}}'}}:{{'{{'}}{{deployConfig.instanceName}}_port{{'}}'}}/{{deployConfig.instanceName}}"
+    url: "{{'{{'}}public_host{{'}}'}}:{{'{{'}}{{deployConfig.instanceName}}_port{{'}}'}}/{{method.name}}"
     body_format: json
-    method: POST
+    method: {{ http_method|upper }}
     return_content: yes
     status_code: 201
     body: {
     }
-  register: specialist_get
+  register: {{method.name}}_{{http_method}}
 
-- debug: var=specialist_get.content
+- debug: var={{method.name}}_{{http_method}}.content
+{% endfor %}
+{% endfor %}
 ...

@@ -6,7 +6,7 @@
 	"methods": [
 	    {
 		"name": "spec",
-		"method": "get",
+		"http_methods": ["get"],
 		"params": {
 		    "id": "string",
 		    "name": "string"
