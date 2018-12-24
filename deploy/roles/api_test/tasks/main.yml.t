@@ -3,7 +3,7 @@
 {% for http_method in method.http_methods %}
 - name: test for {{method.name}}-{{http_method}}
   uri:
-    url: "{{'{{'}}public_host{{'}}'}}:{{'{{'}}{{deployConfig.instanceName}}_port{{'}}'}}/{{method.name}}"
+    url: "{{'{{'}}public_host{{'}}'}}:{{'{{'}}{{deployConfig.instanceName}}_port{{'}}'}}/{{method.name}}{% for key in method.params %}/<{{ key }}>{% endfor%}"
     body_format: json
     method: {{ http_method|upper }}
     return_content: yes
