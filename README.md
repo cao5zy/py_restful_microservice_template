@@ -56,3 +56,67 @@ It will generate a folder with the `your_microservice_name` under the workspace.
 
 Try it and have fun. Please make a issue if you have problems, comments and requirements on it.
 
+
+## Example project
+Please take the following example for your first run.   
+template_data.json
+```
+{
+    "deployConfig": {
+	    "instanceName": "customers_service"
+    },
+    serviceInterface: {
+	"methods": [
+	    {
+		"name": "customers",
+		"http_methods": ["get"],
+		"params": {
+		    "name": "string",
+		    "age": "int"
+		    }
+	    }
+	]
+    },
+    dependedServers: [
+	{
+	    "name": "customer_service_db",
+	    "type": "db"
+	}
+    ]
+}
+
+```
+
+Assuming that you will store the output code in `./workspace`. Run it with the following command.
+```
+codegen --output=./workspace --template-repo=git@github.com:cao5zy/py_restful_microservice_template.git --template-tag=v1.0.0 --datafile=./template_data.json
+```
+Then you will get the following structure.
+```
+workspace
+     └── customers_service
+         ├── deploy
+         │   ├── dev.cfg
+         │   └── roles
+         │       ├── api_test
+         │       │   └── tasks
+         │       │       └── main.yml
+         │       └── main
+         │           ├── defaults
+         │           │   └── main.yml
+         │           ├── tasks
+         │           │   └── main.yml
+         │           ├── templates
+         │           │   └── app.cfg.template
+         │           └── vars
+         │               └── main.yml
+         └── src
+             ├── app.py
+             ├── config.py
+             ├── db.py
+             ├── docker_image
+             │   ├── Dockerfile
+             │   └── requirements.txt
+             └── slogger.cfg
+
+```
