@@ -2,7 +2,7 @@ from flask import Flask
 from slogger import Logger
 from flask_restful import Api
 from config import Cfg
-{% for method in serviceInterface.methods %}from resources.{{method.name}} import {{ method.name | capitalize}} {% endfor %}
+from resources import {% for method in serviceInterface.methods %}{{ method.name | capitalize}}{% if not loop.last %},{% endif %} {% endfor %}
 
 app = Flask(__name__)
 api = Api(app)
