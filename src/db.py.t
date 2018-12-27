@@ -4,6 +4,6 @@ from slogger import Logger
 from pymongo import MongoClient
 from config import Cfg
 
-client = MongoClient("mongodb://{}:{}".format(Cfg.defaults['{{deployConfig.instanceName}}_db'], Cfg.defaults['{{deployConfig.instanceName}}_db_port']))
-
-Db = client['{{deployConfig.instanceName}}']
+{% for srv in dependedServers if srv.type == 'db' %}client_{{ srv.name }} = MongoClient('mongodb://{}:{}'.format(Cfg.dbs['{{srv.name}}'], Cfg.dbs['{{srv.name}}_port']))
+Db_{{srv.name|capitalize}} = client_{{ srv.name }}['{{srv.name}}']
+{% endfor %}

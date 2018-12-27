@@ -16,7 +16,8 @@
     },
     dependedServers: [
 	{
-	    "name": "serv1"
+	    "name": "serv1",
+	    "type": "db"
 	}
     ]
 }
