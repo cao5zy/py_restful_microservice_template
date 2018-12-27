@@ -1,30 +1,58 @@
 # py_restful_microservice_template
 
-## How to use
-- For more information, please go to [codegen](https://github.com/cao5zy/codegen)
-- All template files are ended with `.t`
-- The structure of your template files will be the structure of your generated files
-- Data is in `sample_data.json`
-- The data should contains `project_name` which will be the folder name for the generated files
-- Run `run.bat` to generate your files with templates and enjoy it.
+This is a project of templates for microservice with RESTful Api. The templates are driven by [codegen](https://github.com/cao5zy/codegen).
 
-## Process of developing the template
-- install `md-codegen`
-- run `codegen` command to tune your generation.
+Following the 3 steps below to use it for your first time.
+1. Install codegen
+2. Prepare your data for the template
+3. Generate your microservice project
 
-### Install md-codegen
-Please make sure your current environment has already installed python3
+## Install codegen
 ```
-pip install md-codegen
+/usr/bin/python3 -m pip install md-codegen
 ```
-### Prepare your workspace
+codegen is developed in python 3. Please make sure it is install in python 3 envirnonment to run correctly.
+
+## Prepare your data for the template
+It would be the best choice to copy the code from [sample_data.json](./sample_data.json) to create your data for the template
 ```
-git clone <repo-for-templates>.git
-cd py_restful_microservice_template
+{
+    "deployConfig": {
+	    "instanceName": "<your_microservice_name>"
+    },
+    serviceInterface: {
+	"methods": [
+	    {
+		"name": "<method_name>",
+		"http_methods": ["get"],
+		"params": {
+		    "id": "string",
+		    "name": "string"
+		    }
+	    }
+	]
+    },
+    dependedServers: [
+	{
+	    "name": "<other_service_name>",
+	    "type": "db"
+	}
+    ]
+}
 ```
-### Run
+- `your_microservice_name`: this name will be applied to the folder of the microservice project, the name of container, etc.
+- `method_name`: this name will be applied to the restful resource definition.
+- `other_service_name`: this name will be applied to the db properties.
+
+## Generate your microservice project
 ```
-bash run.bat
+codegen --output=./workspace --template-repo=git@github.com:cao5zy/py_restful_microservice_template.git --template-tag=v1.0.0 --datafile=template_data.json
 ```
-After the running, please check the generated file at `py_restful_microservice_template/test/`
+It will generate a folder with the `your_microservice_name` under the workspace.
+
+
+
+
+
+Try it and have fun. Please make a issue if you have problems, comments and requirements on it.
 
